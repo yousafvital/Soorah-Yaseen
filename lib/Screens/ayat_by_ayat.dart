@@ -102,14 +102,12 @@ class _AyatByAyatScreenState extends State<AyatByAyatScreen>
       ),
       body: Stack(
         children: [
-          // Background image
           Positioned.fill(
             child: Image.asset(
               'assets/images/background3.png',
               fit: BoxFit.contain,
             ),
           ),
-          // Main content
           isLoading
               ? const Center(child: CircularProgressIndicator())
               : hasError

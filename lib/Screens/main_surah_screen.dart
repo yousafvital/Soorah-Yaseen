@@ -67,7 +67,7 @@ class _MainSurahScreenState extends State<MainSurahScreen> {
         reverse: true,
         onPageChanged: (index) {
           setState(() {
-            _isManualNavigation = true; // Reset autoplay for manual swipes
+            _isManualNavigation = true;
             firstPageLoaded = true;
           });
         },
