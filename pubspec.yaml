@@ -1,0 +1,80 @@
+name: surah_yasin_offline
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_zoom_drawer: ^3.2.0
+ # audioplayers: ^6.1.0
+  just_audio: ^0.9.42
+  widget_zoom: ^0.0.4
+  share_plus: ^10.1.2
+  turn_page_transition: ^0.4.0
+  bookfx: ^0.0.2
+  flutter_staggered_animations: ^1.1.1
+  
+  #flip_widget: ^0.1.9
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.1
+
+# flutter_icons:
+#   android: "launcher_icon"
+#   ios: true
+#   image_path: "assets/images/quran.png/"
+#   min_sdk_android: 21
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/quran.png"
+
+
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/audios/
+    - assets/audios/ayat_audios/
+    - assets/json/surah.json
+    #- assets/images/yaseenlogo.png
+
+  fonts:
+    - family: Droid
+      fonts:
+        - asset: assets/fonts/droid_arabic_kufi.ttf
+
+    - family: Noori
+      fonts:
+        - asset: assets/fonts/noor.ttf
+
+    - family: Quran
+      fonts:
+        - asset: assets/fonts/hafs.ttf
