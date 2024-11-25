@@ -56,7 +56,7 @@ class _BookState extends State<Book> {
                     padding: const EdgeInsetsDirectional.all(15),
                     maxHeight: MediaQuery.of(context).size.height -
                         kToolbarHeight -
-                        MediaQueryData.fromWindow(window).padding.top -
+                        MediaQueryData.fromView(window).padding.top -
                         40,
                   ),
                   SizedBox(
