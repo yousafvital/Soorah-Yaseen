@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:surah_yasin_offline/CustomWidgets/custom_audio_player.dart';
 import 'package:surah_yasin_offline/Screens/Pages/page1.dart';
 import 'package:surah_yasin_offline/Screens/Pages/page2.dart';
 import 'package:surah_yasin_offline/Screens/Pages/page3.dart';
@@ -37,6 +38,9 @@ class _MainSurahScreenState extends State<MainSurahScreen> {
             height: 42,
           ),
           onPressed: () {
+            if (mounted) {
+              CustomAudioPlayer.stopAllAudio(); // Stops all audio
+            }
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const AyatByAyatScreen()),
@@ -66,6 +70,9 @@ class _MainSurahScreenState extends State<MainSurahScreen> {
         controller: _pageController,
         reverse: true,
         onPageChanged: (index) {
+          if (mounted) {
+            CustomAudioPlayer.stopAllAudio(); // Stops all audio
+          }
           setState(() {
             _isManualNavigation = true;
             firstPageLoaded = true;

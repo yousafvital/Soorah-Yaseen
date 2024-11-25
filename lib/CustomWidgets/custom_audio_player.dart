@@ -12,6 +12,16 @@ class CustomAudioPlayer extends StatefulWidget {
       required this.pageController,
       required this.isManual});
 
+  static final List<AudioPlayer> _activePlayers = [];
+
+  static void stopAllAudio() {
+    for (var player in _activePlayers) {
+      if (player.playing) {
+        player.stop();
+      }
+    }
+  }
+
   @override
   State<CustomAudioPlayer> createState() => _CustomAudioPlayerState();
 }
@@ -25,15 +35,16 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
   void initState() {
     super.initState();
     _initializePlayer();
+    CustomAudioPlayer._activePlayers.add(player); // Register this player
   }
 
   Future<void> _initializePlayer() async {
     await player.setAsset(widget.audioAsset);
 
     //  print("Error playing audio: $e");
-    // if (!widget.isManual) {
-    //   player.stop();
-    // }
+    if (!widget.isManual) {
+      player.stop();
+    }
 
     player.positionStream.listen((p) {
       setState(() {
@@ -78,6 +89,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
 
   @override
   void dispose() {
+    CustomAudioPlayer._activePlayers.remove(player); // Deregister this player
     player.dispose();
     super.dispose();
   }
