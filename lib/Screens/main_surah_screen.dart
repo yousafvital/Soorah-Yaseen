@@ -8,6 +8,7 @@ import 'package:surah_yasin_offline/Screens/Pages/page5.dart';
 import 'package:surah_yasin_offline/Screens/Pages/page6.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:surah_yasin_offline/Screens/ayat_by_ayat.dart';
+import 'package:surah_yasin_offline/Screens/custom_page.dart';
 
 class MainSurahScreen extends StatefulWidget {
   const MainSurahScreen({super.key});
@@ -29,6 +30,15 @@ class _MainSurahScreenState extends State<MainSurahScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, String>> pagesData = [
+      {"image": "assets/images/w1.jpg", "audio": "assets/audios/p1.mp3"},
+      {"image": "assets/images/w2.jpg", "audio": "assets/audios/p2.mp3"},
+      {"image": "assets/images/w3.jpg", "audio": "assets/audios/p3.mp3"},
+      {"image": "assets/images/w4.jpg", "audio": "assets/audios/p4.mp3"},
+      {"image": "assets/images/w5.jpg", "audio": "assets/audios/p5.mp3"},
+      {"image": "assets/images/w6.png", "audio": "assets/audios/p6.mp3"},
+    ];
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -78,27 +88,19 @@ class _MainSurahScreenState extends State<MainSurahScreen> {
             firstPageLoaded = true;
           });
         },
-        children: [
-          Page1(
-              pageController: _pageController,
-              isManualNavigation: _isManualNavigation,
-              autoPlayOnLoad: firstPageLoaded),
-          Page2(
-              pageController: _pageController,
-              isManualNavigation: _isManualNavigation),
-          Page3(
-              pageController: _pageController,
-              isManualNavigation: _isManualNavigation),
-          Page4(
-              pageController: _pageController,
-              isManualNavigation: _isManualNavigation),
-          Page5(
-              pageController: _pageController,
-              isManualNavigation: _isManualNavigation),
-          Page6(
-              pageController: _pageController,
-              isManualNavigation: _isManualNavigation),
-        ],
+        children: pagesData.asMap().entries.map((entry) {
+          int index = entry.key;
+          Map<String, String> page = entry.value;
+
+          return CustomPage(
+            imagePath: page["image"]!,
+            audioPath: page["audio"]!,
+            pageController: _pageController,
+            isManualNavigation: _isManualNavigation,
+            autoPlayOnLoad: firstPageLoaded,
+            isLastPage: index == pagesData.length - 1, // Pass true if last page
+          );
+        }).toList(),
       ),
     );
   }
@@ -106,7 +108,7 @@ class _MainSurahScreenState extends State<MainSurahScreen> {
   void _handlePageChange() {
     if (_pageController.page == _pageController.page!.roundToDouble()) {
       setState(() {
-        _isManualNavigation = false; // Automated transitions trigger autoplay
+        _isManualNavigation = false;
       });
     }
   }

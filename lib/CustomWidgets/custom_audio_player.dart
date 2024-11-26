@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -96,6 +98,8 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
 
   @override
   Widget build(BuildContext context) {
+    double margin = Platform.isIOS ? 10.0 : 1.0;
+
     return Container(
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 176, 151, 61).withOpacity(0.8),
@@ -105,6 +109,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 6),
+      margin: EdgeInsets.all(margin),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
