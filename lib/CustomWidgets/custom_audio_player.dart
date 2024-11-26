@@ -98,7 +98,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    double margin = Platform.isIOS ? 10.0 : 1.0;
+    double height = Platform.isIOS ? 80 : 60;
 
     return Container(
       decoration: BoxDecoration(
@@ -109,7 +109,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 6),
-      margin: EdgeInsets.all(margin),
+      height: height,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
